@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service Subposts {
+    rpc findSubpost(SubpostRequest) returns (SubpostResponse);
+    rpc addSubpost(CreateSubpostRequest) returns (SubpostResponse);
+}
+
+message SubpostRequest {
+    string postId = 1;
+}
+
+message SubpostResponse {
+    repeated Subpost subposts = 1;
+}
+
+message Subpost {
+    int32 id = 1;
+    string content = 2;
+    string postId = 3;
+    string subpostId = 4; // Add subpostId field
+}
+
+message CreateSubpostRequest {
+    string content = 1;
+    string postId = 2;
+    string subpostId = 3; // Add subpostId field
+}

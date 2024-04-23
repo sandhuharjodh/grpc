@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service Users {
+    rpc findUser(UserRequest) returns (UserResponse);
+   rpc addUser(CreateUserRequest) returns (UserResponse);
+}
+
+message UserRequest {
+    string userId = 1;
+}
+
+
+message UserResponse {
+    string userId = 1;
+    string name = 3;
+    string department = 4;
+}
+
+message CreateUserRequest {
+    string userId = 1;
+    string name = 2;
+    string department = 3;
+}

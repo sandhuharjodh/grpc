@@ -1,0 +1,32 @@
+{
+  "name": "grpc-new",
+  "version": "1.0.0",
+  "description": "GRPC project with user-post-subpost architecture",
+  "main": "index.js",
+  "scripts": {
+    "start-user-ms": "nodemon ./user-ms/main.js",
+    "start-post-ms": "nodemon ./post-ms/main.js",
+    "start-subpost-ms": "nodemon ./subpost-ms/main.js",
+    "start-main-api": "nodemon ./main.js",
+    "start": "npx concurrently \"npm run start-user-ms\" \"npm run start-post-ms\" \"npm run start-subpost-ms\" "
+  },
+  "keywords": [
+    "grpc",
+    "user",
+    "post",
+    "subpost",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.9.2",
+    "@grpc/proto-loader": "^0.7.9",
+    "express": "^4.18.2",
+    "mongoose": "^8.3.1",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

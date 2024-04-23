@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+service Posts {
+    rpc findPost(FindPostRequest) returns (FindPostResponse);
+    rpc addPost(CreatePostRequest) returns (FindPostResponse);
+}
+
+message FindPostRequest {
+    string userId = 1;
+}
+
+message FindPostResponse {
+    repeated Post posts = 1;
+}
+
+message Post {
+    int32 id = 1;
+    string title = 2;
+    string postId = 3;
+    repeated Subpost subposts = 4;
+}
+
+message Subpost {
+    string content = 1;
+    string subpostId = 2;
+}
+
+message CreatePostRequest {
+    string title = 1;
+    string userId = 2; // User ID to associate with the post
+    string postId = 3; // Add postId field
+}
