@@ -28,6 +28,7 @@ Here's what makes gRPC a compelling choice for microservice communication:
 
 Introducing Protocol Buffers and Protobuf Files (.proto)
 gRPC relies on Protocol Buffers, a language-neutral mechanism for defining data structures. These structures are specified in .proto files. Here's how it works:
+    
     1. You define your data structures (messages and fields) in a .proto file, specifying data types (strings, integers, etc.).
 
     2. The protoc compiler processes the .proto file and generates code for your chosen programming language (e.g., Node.js, Java, Python).
@@ -39,10 +40,12 @@ gRPC relies on Protocol Buffers, a language-neutral mechanism for defining data 
 Protobuf vs. JSON: Choosing the Right Tool
 
 While both JSON (JavaScript Object Notation) and Protocol Buffers are used for data exchange, there are key differences:
+    
     • Readability: JSON is human-readable, making it easier to understand message structures for debugging purposes.
     
     • Performance and Size: Protocol Buffers are significantly smaller and faster to parse than JSON, leading to better performance in
      microservices.
+    
     • Schema Enforcement: Protocol Buffers enforce data types, preventing errors during data exchange. JSON lacks this built-in type safety.
     
     
