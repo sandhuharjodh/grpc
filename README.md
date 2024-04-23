@@ -59,6 +59,7 @@ In microservices, gRPC with Protocol Buffers is often preferred due to its perfo
     3. Subpost Service (subpost-ms): Manages subpost data (content, post ID, subpost ID).
 
 
+
 Project Structure:
 project_name/
 ├── package.json
@@ -79,6 +80,7 @@ Starting the Project:
     1.  Install Dependencies:
         ◦  Open your terminal or command prompt and navigate to the project directory.
         ◦  Run the following command to install the required Node.js modules:
+
 Bash
 npm install
 Use code
@@ -87,40 +89,59 @@ Use code
         ◦  Main Server:
 
             ▪  Use nodemon to start the main server with live reload functionality:
+
 Bash
+
+
 nodemon main.js
+
 Use code 
         ◦  Microservices:
             ▪  Each microservice has its own start script defined in the package.json file. You can use these scripts to start individual services:
+
 Bash
 npm run start-user-ms  # Starts the User Service (user-ms)
+
 npm run start-post-ms  # Starts the Post Service (post-ms)
+
 npm run start-subpost-ms  # Starts the Subpost Service (subpost-ms)
+
 
 Use code
 
 Explanation:
+
     •  npm install downloads and installs the dependencies listed in your package.json file, which are required for your project to function.
     •  Nodemon is a useful tool that starts your Node.js application and automatically restarts it whenever you make changes to your code. This helps with development as you don't need to manually restart the server after every code change.
     •  The provided npm start scripts (assuming they are defined in your package.json) will start the respective microservices.
+
+    
 By following these steps, you should be able to successfully set up and run your microservices project. Remember to adjust the commands if your project's structure or script names differ.
 
-
 Technologies Used:
+
     • GRPC: An RPC framework for high performance, low latency communication between services.
+    
     • Node.js: A JavaScript runtime environment used to develop server-side applications.
+    
     • Mongoose: An ODM (Object Data Modeling) library for MongoDB that simplifies data interaction.
+    
     • Express: A web framework for building APIs in Node.js.
 
 
 Data Storage:
+
     • MongoDB: A NoSQL document database used to store user, post, and subpost data.
 
 
 Communication Flow:
+
     1. REST API (main.js):
+    
         ◦ This service acts as the entry point for the application, exposing a RESTful API at port 5001.
+        
         ◦ It handles user requests (GET and POST) for user data and posts with subposts.
+        
     2. User Service (user-ms):
         ◦ Communicates with MongoDB via Mongoose to manage user data.
         ◦ Provides gRPC endpoints for finding and adding users.
