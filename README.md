@@ -61,29 +61,34 @@ In microservices, gRPC with Protocol Buffers is often preferred due to its perfo
 
 
 Project Structure:
-project_name/
-├── package.json
-├── package-lock.json
-├── protos/
-│   ├── posts.proto
-│   ├── subposts.proto
-│   └── users.proto
-├── user-ms/
-│   └── main.js
-├── post-ms/
-│   └── main.js
-└── subpost-ms/
-    └── main.js
-└── main.js
+
+        project_name/
+        ├── package.json
+        ├── package-lock.json
+        ├── protos/
+        │   ├── posts.proto
+        │   ├── subposts.proto
+        │   └── users.proto
+        ├── user-ms/
+        │   └── main.js
+        ├── post-ms/
+        │   └── main.js
+        └── subpost-ms/
+            └── main.js
+        └── main.js
 
 Starting the Project:
     1.  Install Dependencies:
+    
         ◦  Open your terminal or command prompt and navigate to the project directory.
+        
         ◦  Run the following command to install the required Node.js modules:
 
 Bash
+
 npm install
 Use code
+
     2.  Start the Services:
 
         ◦  Main Server:
@@ -99,12 +104,13 @@ Use code
         ◦  Microservices:
             ▪  Each microservice has its own start script defined in the package.json file. You can use these scripts to start individual services:
 
-Bash
-npm run start-user-ms  # Starts the User Service (user-ms)
 
-npm run start-post-ms  # Starts the Post Service (post-ms)
 
-npm run start-subpost-ms  # Starts the Subpost Service (subpost-ms)
+    npm run start-user-ms  # Starts the User Service (user-ms)
+
+    npm run start-post-ms  # Starts the Post Service (post-ms)
+
+    npm run start-subpost-ms  # Starts the Subpost Service (subpost-ms)
 
 
 Use code
@@ -137,11 +143,8 @@ Data Storage:
 Communication Flow:
 
     1. REST API (main.js):
-    
         ◦ This service acts as the entry point for the application, exposing a RESTful API at port 5001.
-        
         ◦ It handles user requests (GET and POST) for user data and posts with subposts.
-        
     2. User Service (user-ms):
         ◦ Communicates with MongoDB via Mongoose to manage user data.
         ◦ Provides gRPC endpoints for finding and adding users.
@@ -156,6 +159,7 @@ Communication Flow:
 
 
 API Endpoints:
+    
     • GET /users/:userId
         ◦ Retrieves user data (ID, name, department) and associated posts with subposts for the given user ID.
     • POST /users
@@ -163,6 +167,7 @@ API Endpoints:
 
 
 Data Model:
+
     • User:
         ◦ userId (string): Unique identifier for the user.
         ◦ name (string): User's name.
@@ -178,69 +183,71 @@ Data Model:
         ◦ postId (string): ID of the post the subpost belongs to.
 
 Sample Request and Response:
-POST Request ( http://localhost:5001/users ):
-
-{
-  "user": {
-    "userId": "1234567",
-    "name": "John Doe",
-    "department": "IT"
-  },
-  "posts": [
+    
+    POST Request ( http://localhost:5001/users ):
+    
     {
-      "title": "First Post",
-      "postId": "post123"
-    },
-    {
-      "title": "Second Post",
-      "postId": "post234"
-    }
-  ],
-  "subposts": [
-    {
-      "content": "First subpost for post1",
-      "postId": "post123",
-      "subpostId": "subpost1"
-    },
-    {
-      "content": "Second subpost for post1",
-      "postId": "post123",
-      "subpostId": "subpost2"
-    },
-
-
-GET Response ( http://localhost:5001/users/:userId ):
-
-{
-  "user": {
-    "userId": "1234",
-    "name": "John Doe",
-    "department": "IT"
-  },
-  "posts": [
-    {
-      "title": "First Post",
-      "postId": "post1",
+      "user": {
+        "userId": "1234567",
+        "name": "John Doe",
+        "department": "IT"
+      },
+      "posts": [
+        {
+          "title": "First Post",
+          "postId": "post123"
+        },
+        {
+          "title": "Second Post",
+          "postId": "post234"
+        }
+      ],
       "subposts": [
         {
           "content": "First subpost for post1",
+          "postId": "post123",
           "subpostId": "subpost1"
         },
         {
           "content": "Second subpost for post1",
+          "postId": "post123",
           "subpostId": "subpost2"
-        }
-      ]
-    },
+        },
+
+
+GET Response ( http://localhost:5001/users/:userId ):
+
+
     {
-      "title": "Second Post",
-      "postId": "post2",
-      "subposts": [
+      "user": {
+        "userId": "1234",
+        "name": "John Doe",
+        "department": "IT"
+      },
+      "posts": [
         {
-          "content": "First subpost for post2",
-          "subpostId": "subpost3"
+          "title": "First Post",
+          "postId": "post1",
+          "subposts": [
+            {
+              "content": "First subpost for post1",
+              "subpostId": "subpost1"
+            },
+            {
+              "content": "Second subpost for post1",
+              "subpostId": "subpost2"
+            }
+          ]
+        },
+        {
+          "title": "Second Post",
+          "postId": "post2",
+          "subposts": [
+            {
+              "content": "First subpost for post2",
+              "subpostId": "subpost3"
+            }
+          ]
         }
       ]
     }
-  ]
-}
