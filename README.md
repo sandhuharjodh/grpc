@@ -10,13 +10,19 @@ Before delving into the User Service, let's establish a core concept: gRPC (Remo
 gRPC is an open-source framework designed for high-performance, low-latency communication between services. It leverages features like:
 
     • HTTP/2: This advanced transport protocol enables efficient data transfer with features like multiplexing (handling multiple requests/responses simultaneously) and header compression.
+   
     • Protocol Buffers: This data serialization format (explained next) ensures efficient and platform-neutral data exchange between services.
+    
     • Streaming: gRPC supports various data streaming patterns, allowing for real-time data flow between services.
 Why Use gRPC?
+
 Here's what makes gRPC a compelling choice for microservice communication:
     • Performance: gRPC's combination of HTTP/2 and Protocol Buffers leads to faster and more efficient communication compared to traditional REST APIs using JSON.
+
     • Scalability: gRPC is well-suited for distributed systems, handling a high volume of requests efficiently.
-    • Strong Typing: gRPC enforces data types, leading to fewer errors and easier development.
+
+    • Strong Typing: gRPC enforces data types, leading to fewer errors and easier development
+
     • Platform Neutrality: gRPC works seamlessly across various programming languages, making it ideal for heterogeneous microservice environments.
     
 Introducing Protocol Buffers and Protobuf Files (.proto)
