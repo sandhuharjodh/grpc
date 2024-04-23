@@ -83,37 +83,24 @@ Starting the Project:
         ◦  Open your terminal or command prompt and navigate to the project directory.
         
         ◦  Run the following command to install the required Node.js modules:
+            npm install
 
-Bash
-
-npm install
-Use code
 
     2.  Start the Services:
 
         ◦  Main Server:
 
             ▪  Use nodemon to start the main server with live reload functionality:
+            
+            nodemon main.js
 
-Bash
 
-
-nodemon main.js
-
-Use code 
         ◦  Microservices:
             ▪  Each microservice has its own start script defined in the package.json file. You can use these scripts to start individual services:
+                npm run start-user-ms  # Starts the User Service (user-ms)
+                npm run start-post-ms  # Starts the Post Service (post-ms)
+                npm run start-subpost-ms  # Starts the Subpost Service (subpost-ms)
 
-
-
-    npm run start-user-ms  # Starts the User Service (user-ms)
-
-    npm run start-post-ms  # Starts the Post Service (post-ms)
-
-    npm run start-subpost-ms  # Starts the Subpost Service (subpost-ms)
-
-
-Use code
 
 Explanation:
 
